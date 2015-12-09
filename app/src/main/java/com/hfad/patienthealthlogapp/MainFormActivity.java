@@ -1,19 +1,20 @@
 package com.hfad.patienthealthlogapp;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 
-public class MainFormActivity extends ActionBarActivity {
+public class MainFormActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_form);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -22,18 +23,26 @@ public class MainFormActivity extends ActionBarActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    /** Action performed on submit button
+     *
+     * @param view
+     */
+    public void onClickSubmit(View view)
+    {
+        EditText nameField = (EditText) findViewById(R.id.name);
+        EditText dateField = (EditText) findViewById(R.id.date);
+        EditText condition = (EditText) findViewById(R.id.condition);
+        String name = nameField.getText().toString();
+        String cond = nameField.getText().toString();
+//        String date = dateField.getText().toString();
+        // Get date object
+        // Get condition's severity ranking
+        int rank = PatientLog.CONDITION_RANK.get(cond);
+        Intent intent = new Intent(this, DisplayPatientListActivity.class);
+        // Put extra information into intent
+        intent.putExtra(DisplayPatientListActivity.EXTRA_NAME, name);
+        intent.putExtra(DisplayPatientListActivity.EXTRA_CONDITION, cond);
+        intent.putExtra(DisplayPatientListActivity.EXTRA_RANK, rank);
+        startActivity(intent);
     }
 }

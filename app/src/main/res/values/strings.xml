@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PatientHealthLogApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="info">Patient\'s Information</string>
+    <string name="patient_name">Patient\'s name</string>
+    <string name="condition">Description of medical condition</string>
+    <string name="date">Date (dd.mm.yyyy)</string>
+    <string name="submit">Submit</string>
+    <string name="title_activity_display_patient_list">DisplayPatientListActivity</string>
+
+</resources>
